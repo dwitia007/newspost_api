@@ -60,7 +60,7 @@ src/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/news-dashboard.git
+git clone [https://github.com/your-username/news-dashboard.git](https://github.com/dwitia007/newspost_api.git)
 cd news-dashboard
 ```
 
