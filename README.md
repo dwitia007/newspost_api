@@ -1,70 +1,126 @@
-# Getting Started with Create React App
+# 📰 Responsive News Dashboard with Payout System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern React-based dashboard that fetches live news articles from the News API and provides filtering, admin-level payout management, export options, and a secure login system.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+### ✅ User Functionality
 
-### `npm start`
+- Secure login system (admin vs user roles)
+- Live news fetching with:
+  - Search
+  - Category
+  - Author
+  - Date range filters
+- News overview with article cards and meta info
+- Article payout calculation for users
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🛡️ Admin Functionality
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Admin-only access to payout summary table
+- Dynamic rate per article configuration
+- Total payout calculation
+- Role-based restrictions for payout management
 
-### `npm test`
+## 📁 Project Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+src/
+├── components/
+│   ├── Auth/               # Login, Auth form components
+│   ├── Dashboard/          # Admin/User dashboard layout
+│   ├── News/
+│   │   ├── Filters.js      # Filter component (search, category, date, author)
+│   │   ├── NewsList.js     # Lists all news articles
+│   │   ├── Overview.js     # Shows stats like total articles
+│   │   ├── PayoutCalculator.js # Calculates total payout
+│   │   └── PayoutTable.js  # Admin-only payout table
+├── redux/
+│   ├── store.js            # Redux store configuration
+│   └── reducers/
+│       ├── newsReducer.js  # Handles API fetch + payout data
+│       └── authReducer.js  # Handles login/user state
+├── utils/
+│   └── api.js              # Axios or Fetch API utility
+└── App.js
+```
 
-### `npm run build`
+## 🧠 Technologies Used
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **React** (with Hooks)
+- **Redux Toolkit** for state management
+- **React Router DOM** for routing
+- **NewsAPI.org** integration
+- **Conditional rendering** for admin-only access
+- **LocalStorage** for storing payout rates
+- **CSS/SCSS** (custom or framework) for UI styling
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ⚙️ Setup Instructions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1. Clone the Repository
 
-### `npm run eject`
+```bash
+git clone https://github.com/your-username/news-dashboard.git
+cd news-dashboard
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 2. Install Dependencies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 3. Set up Environment Variable
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Create a `.env.local` file in the root of the project and add your News API key:
 
-## Learn More
+```
+REACT_APP_NEWS_API_KEY=your_api_key_here
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> Get your free API key from: [https://newsapi.org](https://newsapi.org)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 4. Run the Development Server
 
-### Code Splitting
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## ✍️ Important Files Summary
 
-### Analyzing the Bundle Size
+| File                  | Description                                               |
+| --------------------- | --------------------------------------------------------- |
+| `Filters.js`          | User input fields to filter news by query, category, etc. |
+| `NewsList.js`         | Renders news articles as cards with loading/error states  |
+| `Overview.js`         | Dashboard stats like total articles                       |
+| `PayoutCalculator.js` | Allows users to view total payout for displayed articles  |
+| `PayoutTable.js`      | Admin-only table to manage payouts                        |
+| `newsReducer.js`      | Handles news fetch and payout state                       |
+| `authReducer.js`      | Stores and manages login session and role                 |
+| `.env.local`          | Contains your API key (never commit this)                 |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🔒 Admin Access
 
-### Making a Progressive Web App
+Admins can:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- View and manage all payouts
+- Adjust rate per article
+- View full payout breakdown table
 
-### Advanced Configuration
+Role-based checks are handled via `auth.user.role === 'admin'`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📤 Future Enhancements
 
-### Deployment
+- Export payouts as PDF/CSV
+- Pagination support
+- Add charts/graphs for stats
+- Email notifications
+- OAuth-based login (Google/GitHub)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 📄 License
 
-### `npm run build` fails to minify
+This project is licensed under the MIT License.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 👨‍💻 Author
+
+Built with ❤️ by Dwitia Sisodia

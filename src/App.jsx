@@ -27,11 +27,11 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/" element={<Navigate to="/dashboard" />} />
         </Routes>
       </Router>
     </Provider>
   );
 }
 
-export default App;
+export default App; 
